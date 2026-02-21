@@ -1,0 +1,341 @@
+@charset 'utf-8';
+
+/* common */
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  max-width: 450px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  color: #333;
+}
+
+/* css変数 */
+
+:root {
+  --brand-color: #1f76f9;
+  --hover-color: #2880ff;
+  --serect-color: #1660b9;
+  --gray-color: #999;
+  --base-color: #f2f5ff;
+}
+
+/* nav */
+
+nav {
+  background: var(--brand-color);
+  padding-top: 16px;
+  text-align: center;
+
+  @media (width >=600px) {
+    width: 160px;
+    text-align: left;
+  }
+
+  ul {
+    li {
+
+      &.current {
+        background: var(--serect-color);
+      }
+
+      &:hover {
+        background: var(--hover-color);
+      }
+
+      a {
+        display: flex;
+        padding: 8px 16px;
+        color: #fff;
+        gap: 8px;
+        align-items: center;
+
+        i {
+          font-size: 20px;
+        }
+
+        span {
+          display: none;
+
+          @media (width >=600px) {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* main */
+
+main {
+  flex: 1;
+  padding: 16px;
+  overflow: scroll;
+
+  h2 {
+    font-weight: normal;
+    font-size: 22px;
+    border-bottom: 1px solid #1f1f1f;
+    padding-bottom: 8px;
+  }
+
+  p {
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+}
+
+/* header-list */
+
+ul.header-list {
+  margin-top: 16px;
+  background: var(--base-color);
+  padding: 16px 32px;
+  border: 2px dashed var(--brand-color);
+  border-radius: 16px;
+
+  li+li {
+    margin-top: 8px;
+  }
+
+  a:hover {
+    opacity: 0.7;
+  }
+}
+
+/* main-list */
+
+ul.main-list {
+  margin-top: 12px;
+
+  li {
+    padding: 8px 0;
+  }
+}
+
+/* 返信メール */
+
+.mail ul.main-list {
+  li+li {
+    border-top: 1px dashed var(--gray-color);
+  }
+}
+
+/* つぶやき + 返信メール */
+
+.tweet h3,
+.mail h3 {
+  font-weight: normal;
+  margin-top: 16px;
+  background: #ccc;
+  color: #fff;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+/* 待機の姿勢 + トラブル 共通項目 */
+
+.standby>.container,
+.tech>.container,
+.trouble>.container,
+.other>.container {
+  background: #fafafa;
+  margin-top: 16px;
+  border-radius: 8px;
+  padding: 16px;
+
+  h3 {
+    border-left: 8px solid var(--brand-color);
+    padding-left: 8px;
+  }
+
+  section {
+    background: #fff;
+    padding: 16px;
+    margin-top: 24px;
+    border-radius: 8px;
+  }
+}
+
+/* 待機姿勢 */
+
+.standby>.container {
+  section {
+    display: flex;
+    gap: 32px;
+
+    img {
+      width: 40%;
+      border-radius: 8px;
+    }
+
+    ul {
+      li {
+        list-style: disc;
+      }
+    }
+  }
+}
+
+/* 会話のテク */
+
+.tech>.container {
+  section {
+    padding: 0;
+    overflow: hidden;
+
+    h4 {
+      text-align: center;
+      background: #9d9d9d;
+      color: #fff;
+      padding: 4px;
+    }
+
+    div {
+      padding: 16px;
+
+      ul {
+
+        li {
+          display: flex;
+
+          &+& {
+            margin-top: 16px;
+          }
+
+          & span {
+            padding: 8px 12px;
+            border-radius: 12px;
+          }
+        }
+
+        li.girl {
+          justify-content: flex-end;
+
+          & span {
+            background: #62a1ff;
+            color: #fff;
+          }
+        }
+
+        li.customer {
+          & span {
+            background: #f2f5ff;
+          }
+        }
+      }
+
+      ol {
+        margin-left: 16px;
+        list-style: decimal;
+      }
+
+      p {
+        color: #ff3333;
+      }
+    }
+  }
+}
+
+/* FAQ */
+
+.faq>.container {
+  section {
+    background: #fafafa;
+    padding: 16px 8px;
+
+    &:nth-child(even) {
+      background: #fff;
+    }
+
+    &+& {
+      border-top: 1px solid #ccc;
+    }
+
+    h4 {
+      color: var(--brand-color);
+
+      &::before {
+        content: 'Q ';
+      }
+    }
+
+    p {
+      margin-top: 8px;
+
+      &::before {
+        content: 'A ';
+        color: #ff3333;
+      }
+    }
+
+    ul {
+      margin-left: 24px;
+      margin-top: 8px;
+
+      li {
+        list-style: disc;
+      }
+    }
+  }
+}
+
+
+/* トラブル */
+
+.trouble>.container {
+  section {
+    h4 {
+      color: var(--brand-color);
+    }
+
+    img {
+      margin-top: 16px;
+    }
+  }
+}
+
+/* その他 */
+
+.other>.container {
+  ul {
+    padding-left: 16px;
+
+    li {
+      list-style: disc;
+    }
+  }
+}
