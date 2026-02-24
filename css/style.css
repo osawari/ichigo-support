@@ -344,11 +344,11 @@ ul.main-list {
 
 /* つぶやき トースト表示 */
 
-.copyable {
+.copyable li span {
   cursor: pointer;
   transition: 0.2s;
 }
-.copyable:hover {
+.copyable li span:hover {
   background: #e0e0e0;
 }
 
